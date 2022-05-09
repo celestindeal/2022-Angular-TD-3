@@ -1,0 +1,31 @@
+.vols{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    justify-content: space-around;
+    width: 100%;
+
+    p, div, img{
+        flex-grow: 1;
+    }
+
+    img{
+        width: 100px!important;
+        height: auto!important;
+    }
+}
+
+
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    p {
+        margin: auto;
+    }
+    div{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+

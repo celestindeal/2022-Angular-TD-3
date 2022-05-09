@@ -1,5 +1,17 @@
 <!-- Affichage d'un vol -->
-<p *ngIf="vol"> {{vol.icao}} : {{vol.matricule}} : {{vol.compagnie}} : {{vol.aeroportDepart}} -> {{vol.aeroportArrivee}} </p>
-<div class="icon">
-    <mat-icon> arrow_right_alt </mat-icon>
+<div *ngIf="vol" class="vols"> 
+    <p>{{vol.icao}}</p>
+    <p>{{vol.matricule}}</p>
+    <p>{{vol.compagnie}}</p>
+    <div class="container">
+        <p>{{vol.aeroportDepart}}</p>
+        <div class="icon">
+            <mat-icon> arrow_right_alt </mat-icon>
+        </div>
+        <p *ngIf="vol.aeroportArrivee == '' || vol.aeroportArrivee == null">Inconnu</p>
+        <p *ngIf="vol.aeroportArrivee != '' && vol.aeroportArrivee != null">{{vol.aeroportArrivee}}</p>
+    </div>
+    <img *ngIf="vol.compagnie == 'Air France'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Air_France_Logo.svg/2560px-Air_France_Logo.svg.png" alt="Air France">
+    <img *ngIf="vol.compagnie == 'Air France Hop'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Air_France_Hop_Logo.svg/1280px-Air_France_Hop_Logo.svg.png" alt="Air France hop">
+    <img *ngIf="vol.compagnie == 'Transavia France'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Transavia_logo.svg/2560px-Transavia_logo.svg.png" alt="Transavia France">
 </div>
