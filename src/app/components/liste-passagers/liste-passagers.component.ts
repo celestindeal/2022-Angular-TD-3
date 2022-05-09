@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Passager } from 'src/app/models/passager.model';
+import { Vol } from 'src/app/models/vol.model';
 
 @Component({
   selector: 'app-liste-passagers',
@@ -7,5 +8,5 @@ import { Passager } from 'src/app/models/passager.model';
   styleUrls: ['./liste-passagers.component.scss']
 })
 export class ListePassagersComponent {
-  @Input() passagers! : Passager[];
+  @Input() vol! : Vol;
 }

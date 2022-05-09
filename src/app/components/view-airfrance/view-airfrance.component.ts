@@ -53,9 +53,9 @@ export class ViewAirFranceComponent implements OnDestroy{
   }
 
   onVolEvent(vol : Vol):void{
+    this.volSelected = vol;
     this.obsVolSelected = this._passagerService.getPassagers(vol.icao);
     this._subVolSelected = this.obsVolSelected.subscribe((value)=>{
-      console.log(value);
       this.volSelected.passagers = value;
     });
   }
