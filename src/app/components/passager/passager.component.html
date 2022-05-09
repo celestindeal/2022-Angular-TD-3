@@ -3,7 +3,7 @@
     <div class="passager-photo">
         <img   class="{{photo?'net':'flou'}}" src="{{passager.image}} " alt="">
     </div>
-    <p>{{passager.nom}}</p>
+    <p matTooltip="{{passager.email}}" matTooltipPosition="right">{{passager.nom}}</p>
     <p [appClasseVol]="passager.classeVol" >{{passager.classeVol | uppercase}}</p>
     <div class="icon" [appClasseBagage]="[passager.classeVol, passager.nbBagagesSoute.toString()]">
         <mat-icon>work</mat-icon><span>x{{passager.nbBagagesSoute}}</span>
