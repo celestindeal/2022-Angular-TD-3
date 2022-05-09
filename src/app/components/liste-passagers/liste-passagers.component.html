@@ -1,6 +1,6 @@
 <!-- Affichage de la liste des passagers -->
 <div *ngIf="vol.passagers">
-    <mat-slide-toggle checked="{{photos}}" (toggleChange)="onChangePhoto()">Afficher photos</mat-slide-toggle>
+    <mat-slide-toggle checked="{{photos}}" (toggleChange)="onChangePhoto()" class="toggle">Afficher photos</mat-slide-toggle>
     <p *ngFor="let passager of vol.passagers">
     <app-passager [passager]="passager" [photo]="photos"  > </app-passager>
 </p>
