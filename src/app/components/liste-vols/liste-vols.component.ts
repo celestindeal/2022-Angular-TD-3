@@ -8,9 +8,9 @@ import { Vol } from 'src/app/models/vol.model';
   styleUrls: ['./liste-vols.component.scss']
 })
 export class ListeVolsComponent {
-  @Input() vols! : Vol[];
-  @Output() VolEvent = new EventEmitter<Vol>();
-  onVolClick(vol : Vol){
+  @Input() vols! : Vol[];     // liste des vols à afficher
+  @Output() VolEvent = new EventEmitter<Vol>();    // émission du vols selectionnés
+  onVolClick(vol : Vol){  // envoye du vol sélectionner
     this.VolEvent.emit(vol);
   }
 }

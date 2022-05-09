@@ -11,7 +11,7 @@ import { Vol } from 'src/app/models/vol.model';
 })
 
 export class PassagerComponent {
-  @Input() passager!: Passager;
-  @Input() appClasseVol!: ClasseVolDirective;
-  @Input() photo!:boolean;
+  @Input() passager!: Passager;    // réception du passager à afficher 
+  @Input() appClasseVol!: ClasseVolDirective;    // réception de la directive pour choisir la couleur de la classe
+  @Input() photo!:boolean;    // réception du choix d'affichage de la photo du passager
 }

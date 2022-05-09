@@ -1,11 +1,11 @@
 <!-- Affichage d'un passager -->
 <div class="passagers-container">
-    <div class="passager-photo">
+    <div class="passager-photo">  <!-- affichage de la photo du pasager avec flou ou non -->
         <img   class="{{photo?'net':'flou'}}" src="{{passager.image}} " alt="">
     </div>
-    <p matTooltip="{{passager.email}}" matTooltipPosition="right">{{passager.nom}}</p>
-    <p [appClasseVol]="passager.classeVol" >{{passager.classeVol | uppercase}}</p>
-    <div class="icon" [appClasseBagage]="[passager.classeVol, passager.nbBagagesSoute.toString()]">
+    <p matTooltip="{{passager.email}}" matTooltipPosition="right">{{passager.nom}}</p>    <!-- affichage du nom et de l'email -->
+    <p [appClasseVol]="passager.classeVol" >{{passager.classeVol | uppercase}}</p>    <!-- affichage de la classe avec coloration selon la classe --> 
+    <div class="icon" [appClasseBagage]="[passager.classeVol, passager.nbBagagesSoute.toString()]">    <!-- affichage du nombre bagage avec coloration du fond selon la classe et le nombre de bagages -->
         <mat-icon>work</mat-icon><span>x{{passager.nbBagagesSoute}}</span>
     </div>
 </div>

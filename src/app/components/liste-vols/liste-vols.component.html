@@ -1,4 +1,4 @@
 <!-- Affichage de la liste des vols -->
-<p  *ngFor="let vol of vols ">
+<p  *ngFor="let vol of vols ">    <!-- boucle pour afficher la liste des vols selon le filtre choisi  -->
     <app-vol [vol]="vol"   (click)="onVolClick(vol)"> </app-vol>
 </p>

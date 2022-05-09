@@ -10,10 +10,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 })
 export class ListePassagersComponent   {
   @Input() vol! : Vol;
-  photos:boolean=false;
+  photos:boolean=false;   // photo des passagers 
 
-  onChangePhoto(){
+  onChangePhoto(){ // fonction affichée ou non les photos des passagers
     this.photos = !this.photos;
-    console.log(this.photos);
   }
 }
