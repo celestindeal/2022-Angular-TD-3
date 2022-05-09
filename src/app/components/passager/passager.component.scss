@@ -1,0 +1,41 @@
+.passagers-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    justify-content: space-around;
+    width: 100%;
+
+    p, div{
+        margin: auto;
+        text-align: center;
+        width: 25%;
+    }
+    
+    /*
+    p{
+        flex-grow: 2;
+    }
+    
+    p{
+        flex-grow: 1;
+    }*/
+}
+
+.passager-photo{
+    padding-left: 5px;
+    width: 100px!important;
+
+    img{
+        width: 100%;
+    }
+}
+
+.icon{
+    width: 100px!important;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    justify-content: center;
+    align-items: center;
+}
