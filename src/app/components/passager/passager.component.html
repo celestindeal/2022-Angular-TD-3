@@ -1,2 +1,18 @@
 <!-- Affichage d'un passager -->
-<p>{{passager.image}} : {{passager.nom}} : {{passager.classeVol}} : {{passager.nbBagagesSoute}} </p>
+<table style="width: 100%;" >
+    <tr>
+        <td>
+            <img  src="{{passager.image}} " alt="">
+            
+        </td>
+        <td>
+             {{passager.nom}} 
+        </td>
+        <td>
+            {{passager.classeVol}} 
+        </td>
+        <td>
+            <mat-icon> work</mat-icon>  {{passager.nbBagagesSoute}} 
+        </td>
+    </tr>
+</table>
