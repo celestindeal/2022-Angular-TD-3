@@ -9,13 +9,9 @@ import { Vol } from 'src/app/models/vol.model';
   templateUrl: './passager.component.html',
   styleUrls: ['./passager.component.scss']
 })
+
 export class PassagerComponent {
-@Input() passager!: Passager;
-@Input() appClasseVol!: ClasseVolDirective;
-@Input() photo!:boolean;
-
-
-
-
-
+  @Input() passager!: Passager;
+  @Input() appClasseVol!: ClasseVolDirective;
+  @Input() photo!:boolean;
 }

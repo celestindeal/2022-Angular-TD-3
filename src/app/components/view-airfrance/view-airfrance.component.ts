@@ -12,9 +12,6 @@ import { PassagerService } from 'src/app/services/passager.service';
 import { ActivatedRoute } from '@angular/router';
 
 
-
-
-
 @Component({
   selector: 'app-view-airfrance',
   templateUrl: './view-airfrance.component.html',
@@ -33,8 +30,6 @@ export class ViewAirFranceComponent implements OnDestroy, OnInit{
 
   type: string = 'decollages';
   private _subRoute : Subscription = new Subscription();
-
-
   
   constructor(private _volService: VolService, private _passagerService: PassagerService, private _activatedRoute: ActivatedRoute) {}
 
