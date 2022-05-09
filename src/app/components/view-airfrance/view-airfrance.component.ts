@@ -7,6 +7,8 @@ import { Vol } from 'src/app/models/vol.model';
 import { VolService } from '../../services/vol.service';
 import { VolComponent } from '../vol/vol.component';
 import { Subscription } from 'rxjs';
+import { Passager } from 'src/app/models/passager.model';
+import { PassagerService } from 'src/app/services/passager.service';
 
 
 
@@ -20,10 +22,16 @@ import { Subscription } from 'rxjs';
 export class ViewAirFranceComponent implements OnDestroy{
 
   vols: Vol[] = [];
-  obs?:Observable<Vol[]>;
-  private _sub : Subscription = new Subscription();
-  constructor(private _volService: VolService) {}
+
+  obsVols?:Observable<Vol[]>;
+  private _subVols : Subscription = new Subscription();
+
+  volSelected!  : Vol;
+  obsVolSelected?:Observable<Passager[]>;
+  private _subVolSelected : Subscription = new Subscription();
+
   
+  constructor(private _volService: VolService, private _passagerService: PassagerService) {}
 
   /**
    * Réaction à la mise à jour des filtres
@@ -33,15 +41,24 @@ export class ViewAirFranceComponent implements OnDestroy{
    */
   onFiltresEvent(filtres: IFiltres): void {
    
-    this.obs = this._volService.getVolsDepart(filtres.aeroport.icao,(filtres.debut.getTime()/1000),(filtres.fin.getTime()/1000));
-    this._sub = this.obs.subscribe((value)=>{
+    this.obsVols = this._volService.getVolsDepart(filtres.aeroport.icao,(filtres.debut.getTime()/1000),(filtres.fin.getTime()/1000));
+    this._subVols = this.obsVols.subscribe((value)=>{
       this.vols = value;
     });
   }
 
   ngOnDestroy(): void {
-    this._sub.unsubscribe();
+    this._subVols.unsubscribe();
+    this._subVolSelected.unsubscribe();
   }
-  
+
+  onVolEvent(vol : Vol):void{
+    this.obsVolSelected = this._passagerService.getPassagers(vol.icao);
+    this._subVolSelected = this.obsVolSelected.subscribe((value)=>{
+      console.log(value);
+      this.volSelected.passagers = value;
+    });
+  }
+
 }
 

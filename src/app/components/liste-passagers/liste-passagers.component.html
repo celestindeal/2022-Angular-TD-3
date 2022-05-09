@@ -1,3 +1,4 @@
 <!-- Affichage de la liste des passagers -->
-
-
+<p  *ngFor="let passager of passagers ">
+    <app-passager [passager]="passager"   > </app-passager>
+</p>
