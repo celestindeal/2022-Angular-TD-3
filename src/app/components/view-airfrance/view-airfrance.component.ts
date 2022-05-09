@@ -1,18 +1,29 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnDestroy } from '@angular/core';
+import { Observable, Subscriber } from 'rxjs';
+import { AEROPORTS } from 'src/app/constants/aeroport.constant';
 import { IFiltres } from 'src/app/models/filtres.model';
 import { Vol } from 'src/app/models/vol.model';
 import { VolService } from '../../services/vol.service';
+import { VolComponent } from '../vol/vol.component';
+import { Subscription } from 'rxjs';
+
+
+
+
 
 @Component({
   selector: 'app-view-airfrance',
   templateUrl: './view-airfrance.component.html',
   styleUrls: ['./view-airfrance.component.scss']
 })
-export class ViewAirFranceComponent {
+export class ViewAirFranceComponent implements OnDestroy{
 
   vols: Vol[] = [];
-
-  constructor(private _volService: VolService) { }
+  obs?:Observable<Vol[]>;
+  private _sub : Subscription = new Subscription();
+  constructor(private _volService: VolService) {}
+  
 
   /**
    * Réaction à la mise à jour des filtres
@@ -21,7 +32,16 @@ export class ViewAirFranceComponent {
    * @param filtres récupérés depuis le composant enfant
    */
   onFiltresEvent(filtres: IFiltres): void {
-    // TODO
+   
+    this.obs = this._volService.getVolsDepart(filtres.aeroport.icao,(filtres.debut.getTime()/1000),(filtres.fin.getTime()/1000));
+    this._sub = this.obs.subscribe((value)=>{
+      this.vols = value;
+    });
   }
 
+  ngOnDestroy(): void {
+    this._sub.unsubscribe();
+  }
+  
 }
+
