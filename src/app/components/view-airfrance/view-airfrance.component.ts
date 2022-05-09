@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscriber } from 'rxjs';
 import { AEROPORTS } from 'src/app/constants/aeroport.constant';
 import { IFiltres } from 'src/app/models/filtres.model';
@@ -9,6 +9,7 @@ import { VolComponent } from '../vol/vol.component';
 import { Subscription } from 'rxjs';
 import { Passager } from 'src/app/models/passager.model';
 import { PassagerService } from 'src/app/services/passager.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -19,7 +20,7 @@ import { PassagerService } from 'src/app/services/passager.service';
   templateUrl: './view-airfrance.component.html',
   styleUrls: ['./view-airfrance.component.scss']
 })
-export class ViewAirFranceComponent implements OnDestroy{
+export class ViewAirFranceComponent implements OnDestroy, OnInit{
 
   vols: Vol[] = [];
 
@@ -27,11 +28,15 @@ export class ViewAirFranceComponent implements OnDestroy{
   private _subVols : Subscription = new Subscription();
 
   volSelected!  : Vol;
-  obsVolSelected?:Observable<Passager[]>;
+  private obsVolSelected?:Observable<Passager[]>;
   private _subVolSelected : Subscription = new Subscription();
 
+  type: string = 'decollages';
+  private _subRoute : Subscription = new Subscription();
+
+
   
-  constructor(private _volService: VolService, private _passagerService: PassagerService) {}
+  constructor(private _volService: VolService, private _passagerService: PassagerService, private _activatedRoute: ActivatedRoute) {}
 
   /**
    * Réaction à la mise à jour des filtres
@@ -41,15 +46,22 @@ export class ViewAirFranceComponent implements OnDestroy{
    */
   onFiltresEvent(filtres: IFiltres): void {
    
-    this.obsVols = this._volService.getVolsDepart(filtres.aeroport.icao,(filtres.debut.getTime()/1000),(filtres.fin.getTime()/1000));
+    this.obsVols = this._volService.getVols(filtres.aeroport.icao,(filtres.debut.getTime()/1000),(filtres.fin.getTime()/1000), this.type == 'decollages' ? 'departure' : 'arrival');
     this._subVols = this.obsVols.subscribe((value)=>{
       this.vols = value;
     });
   }
 
+  ngOnInit(): void {
+        this._subRoute = this._activatedRoute.data.subscribe((data$) => {
+        this.type = data$['type'] ? data$['type'] : 'decollages';
+      })
+  }
+
   ngOnDestroy(): void {
     this._subVols.unsubscribe();
     this._subVolSelected.unsubscribe();
+    this._subRoute.unsubscribe();
   }
 
   onVolEvent(vol : Vol):void{
