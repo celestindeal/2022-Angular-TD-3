@@ -4,8 +4,8 @@
         <img src="{{passager.image}} " alt="">
     </div>
     <p>{{passager.nom}}</p>
-    <p>{{passager.classeVol | uppercase}}</p>
-    <div class="icon">
+    <p [appClasseVol]="passager.classeVol" >{{passager.classeVol | uppercase}}</p>
+    <div class="icon" [appClasseBagage]="[passager.classeVol, passager.nbBagagesSoute.toString()]">
         <mat-icon>work</mat-icon><span>x{{passager.nbBagagesSoute}}</span>
     </div>
 </div>

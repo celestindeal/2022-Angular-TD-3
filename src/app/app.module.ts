@@ -23,6 +23,8 @@ import { PassagerComponent } from './components/passager/passager.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ViewAirFranceComponent } from './components/view-airfrance/view-airfrance.component';
 import { VolComponent } from './components/vol/vol.component';
+import { ClasseVolDirective } from './classe-vol.directive';
+import { ClasseBagageDirective } from './classe-bagage.directive';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -35,7 +37,9 @@ registerLocaleData(localeFr, 'fr');
     ToolbarComponent,
     ListePassagersComponent,
     PassagerComponent,
-    ViewAirFranceComponent
+    ViewAirFranceComponent,
+    ClasseVolDirective,
+    ClasseBagageDirective
   ],
   imports: [
     BrowserModule,

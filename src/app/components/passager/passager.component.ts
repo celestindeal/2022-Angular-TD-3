@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input } from '@angular/core';
+import { ClasseVolDirective } from 'src/app/classe-vol.directive';
+import { ClasseBagageDirective } from 'src/app/classe-bagage.directive';
 import { Passager } from 'src/app/models/passager.model';
 import { Vol } from 'src/app/models/vol.model';
 
@@ -9,4 +11,10 @@ import { Vol } from 'src/app/models/vol.model';
 })
 export class PassagerComponent {
 @Input() passager!: Passager;
+@Input() appClasseVol!: ClasseVolDirective;
+
+
+
+
+
 }
