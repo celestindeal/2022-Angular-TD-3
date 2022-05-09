@@ -1,3 +1,6 @@
 <!-- Affichage de la liste des passagers -->
-
-
+<div *ngIf="vol.passagers">
+<p  *ngFor="let passager of vol.passagers">
+    <app-passager [passager]="passager"   > </app-passager>
+</p>
+</div>
