@@ -20,7 +20,7 @@ export class VolService {
     return this.http.get<any>(`https://opensky-network.org/api/flights/${type}?airport=${code}&begin=${debut}&end=${fin}`).pipe(
       map((response) => response
         .filter((dto: IVolDto) => this._estUnVolAirFrance(dto))
-        .map((dto: IVolDto) => new Vol(dto))
+        .map((dto: IVolDto) => new Vol(dto, type))
     ));
   }
 

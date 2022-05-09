@@ -36,14 +36,16 @@ export class Vol implements IVol {
   aeroportDepart: string;
   aeroportArrivee: string;
   passagers: IPassager[];
+  type: string;
 
-  constructor(dto: IVolDto) {
+  constructor(dto: IVolDto, type: string) {
     this.icao = dto.icao24;
     this.matricule = dto.callsign;
     this.compagnie = this.getCompagnie(dto.callsign);
     this.aeroportDepart = dto.estDepartureAirport;
     this.aeroportArrivee = dto.estArrivalAirport;
     this.passagers = [];
+    this.type = type;
   }
 
   getCompagnie(matricule: string): string {
