@@ -12,6 +12,7 @@ import { Vol } from 'src/app/models/vol.model';
 export class PassagerComponent {
 @Input() passager!: Passager;
 @Input() appClasseVol!: ClasseVolDirective;
+@Input() photo!:boolean;
 
 
 

@@ -1,7 +1,7 @@
 <!-- Affichage d'un passager -->
 <div class="passagers-container">
     <div class="passager-photo">
-        <img src="{{passager.image}} " alt="">
+        <img   class="{{photo?'net':'flou'}}" src="{{passager.image}} " alt="">
     </div>
     <p>{{passager.nom}}</p>
     <p [appClasseVol]="passager.classeVol" >{{passager.classeVol | uppercase}}</p>
