@@ -1,11 +1,15 @@
 <!-- Affichage d'un vol -->
 <div *ngIf="vol" class="vols"> 
+    <!-- icone de départ ou d'atterissage -->
     <div class="icon fligth-icon">
         <mat-icon *ngIf="vol.type == 'departure'">flight_takeoff</mat-icon>
         <mat-icon *ngIf="vol.type == 'arrival'">flight_land</mat-icon>
     </div>
+    <!-- icao -->
     <p>{{vol.icao}}</p>
+    <!-- matricule -->
     <p>{{vol.matricule}}</p>
+    <!-- départ -> arrivée -->
     <div class="container">
         <p *ngIf="vol.aeroportDepart == '' || vol.aeroportDepart == null">Inconnu</p>
         <p *ngIf="vol.aeroportDepart != '' && vol.aeroportDepart != null">{{vol.aeroportDepart}}</p>
@@ -15,6 +19,7 @@
         <p *ngIf="vol.aeroportArrivee == '' || vol.aeroportArrivee == null">Inconnu</p>
         <p *ngIf="vol.aeroportArrivee != '' && vol.aeroportArrivee != null">{{vol.aeroportArrivee}}</p>
     </div>
+    <!-- logo de la compagnie -->
     <div class="logo">
         <img *ngIf="vol.compagnie == 'Air France'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Air_France_Logo.svg/2560px-Air_France_Logo.svg.png" alt="Air France">
         <img *ngIf="vol.compagnie == 'Air France Hop'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Air_France_Hop_Logo.svg/1280px-Air_France_Hop_Logo.svg.png" alt="Air France hop">

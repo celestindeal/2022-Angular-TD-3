@@ -47,18 +47,30 @@ export class ViewAirFranceComponent implements OnDestroy, OnInit{
     });
   }
 
+  /**
+   * Observable sur la route qui permet de savoir si la page à afficher
+   * est celles des Décollages ou des affichages
+   */
   ngOnInit(): void {
         this._subRoute = this._activatedRoute.data.subscribe((data$) => {
         this.type = data$['type'] ? data$['type'] : 'decollages';
       })
   }
 
+  /**
+   * Se désabonne de tous les observables à la destruction du composant
+   */
   ngOnDestroy(): void {
     this._subVols.unsubscribe();
     this._subVolSelected.unsubscribe();
     this._subRoute.unsubscribe();
   }
 
+  /**
+   * Appellée à la suite d'un click sur un vol.
+   * Récupère la liste des passagers du vol à afficher
+   * @param vol le vol sur lequel on a cliqué
+   */
   onVolEvent(vol : Vol):void{
     this.volSelected = vol;
     this.obsVolSelected = this._passagerService.getPassagers(vol.icao);

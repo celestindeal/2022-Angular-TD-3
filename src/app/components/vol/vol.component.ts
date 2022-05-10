@@ -8,6 +8,6 @@ import { COMPAGNIES } from 'src/app/constants/compagnie.constant';
   styleUrls: ['./vol.component.scss']
 })
 export class VolComponent {
-  @Input() vol!: Vol;
+  @Input() vol!: Vol; // le vol affiché
 
 }

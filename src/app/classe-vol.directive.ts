@@ -4,6 +4,14 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
     selector: '[appClasseVol]'
 })
 export class ClasseVolDirective {
+
+    /**
+     * Affiche la classe du vol en une couleur différente en fonction de la classe
+     * STANDARD : bleu
+     * PREMIUM : vert
+     * BUSINESS : rouge
+     * @param value la classe du passager
+     */
     @Input() set appClasseVol(value: string) {
         let color;
         switch (value) {

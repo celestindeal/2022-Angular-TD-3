@@ -10,7 +10,7 @@ import { Vol } from 'src/app/models/vol.model';
 export class ListeVolsComponent {
   @Input() vols! : Vol[];     // liste des vols à afficher
   @Output() VolEvent = new EventEmitter<Vol>();    // émission du vols selectionnés
-  onVolClick(vol : Vol){  // envoye du vol sélectionner
+  onVolClick(vol : Vol){  // envoi du vol sélectionné
     this.VolEvent.emit(vol);
   }
 }
